@@ -28,11 +28,14 @@ galleryEl.addEventListener("click", (event) => {
 
     instance.show();
 
-    galleryEl.addEventListener("keydown", (event) => {
+    galleryEl.addEventListener("keydown", closeWindow);
+
+    function closeWindow(event) {
       if (event.code === "Escape") {
         instance.close();
-        galleryEl.removeEventListener("keydown", () => {});
+        galleryEl.removeEventListener("keydown", closeWindow);
+        console.log(event.code);
       }
-    });
+    }
   }
 });
